@@ -7,7 +7,7 @@ from . import keyboards
 # Create your views here.
 
 def keyboard(request):
-    return keyboards.default_keyboard()
+    return JsonResponse(keyboards.default_keyboard())
 
 @csrf_exempt
 def message(request):

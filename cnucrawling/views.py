@@ -1,8 +1,8 @@
-import json
-from django.shortcuts import render
+import json, datetime, time
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from . import keyboards
+from . import library_crawl
 
 # Create your views here.
 
@@ -14,9 +14,18 @@ def message(request):
     json_str = (request.body).decode('utf-8')
     received_json_data = json.loads(json_str)
     content_msg = received_json_data['content']
-    return JsonResponse({
-        'message' :{
-            'text' : content_msg
-        },
-        'keyboard' : keyboards.default_keyboard()
-    })
+
+    if content_msg == "도서관":
+        return JsonResponse({
+            'messgae' :{
+                'text' : library_crawl.get_library_info()
+            },
+            'keyboard' : keyboards.default_keyboard()
+        })
+    else:
+        return JsonResponse({
+            'message' :{
+                'text' : content_msg
+            },
+            'keyboard' : keyboards.default_keyboard()
+        })

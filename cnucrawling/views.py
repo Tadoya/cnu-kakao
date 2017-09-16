@@ -63,7 +63,7 @@ def message(request):
             'keyboard' : keyboards.bus_keyboard()
         })
     elif content_msg == "A노선(경상)" or content_msg == "B노선(사회)" \
-        or content_msg == "C노선(유성)" or content_msg == "D노선(야갼)" \
+        or content_msg == "C노선(유성)" or content_msg == "D노선(야간)" \
         or content_msg == "보운(편도)" or content_msg == "보운(운행)":
         return JsonResponse({
             'message' :{

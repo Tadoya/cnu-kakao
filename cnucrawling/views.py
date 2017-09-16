@@ -57,17 +57,24 @@ def message(request):
             },
             'keyboard' : keyboards.default_keyboard()
         })
-    elif content_msg =="D노선(야갼)":
+    elif content_msg =="D노선(야간)":
         return JsonResponse({
             'message' :{
                 'text' : bus_info.get('D')
             },
             'keyboard' : keyboards.default_keyboard()
         })
-    elif content_msg =="보운행":
+    elif content_msg =="보운(편도)":
         return JsonResponse({
             'message' :{
                 'text' : bus_info.get('E')
+            },
+            'keyboard' : keyboards.default_keyboard()
+        })
+    elif content_msg =="보운(운행)":
+        return JsonResponse({
+            'message' :{
+                'text' : bus_info.get('F')
             },
             'keyboard' : keyboards.default_keyboard()
         })

@@ -9,7 +9,7 @@ def default_keyboard():
 def bus_keyboard():
     return {
         'type' : 'buttons',
-        'buttons' : ['A노선(경상)', 'B노선(사회)', 'C노선(유성)', 'D노선(야간)', '보운행']
+        'buttons' : ['A노선(경상)', 'B노선(사회)', 'C노선(유성)', 'D노선(야간)', '보운(편도)', '보운(운행)']
     }
 
 def nonbutton_keyboard():

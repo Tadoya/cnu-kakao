@@ -1,11 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 
-def get_library_info(call):
+#문자열화
+def get_library_info():
     str = ''
     crawl_json = crawl()
 
-    print('called by', call)
     for key in crawl_json:
         str += key+'\n\t'+crawl_json[key]+'\n\n'
 
@@ -24,12 +24,9 @@ def crawl():
     my_titles =soup.select('tr')
     data=[]
 
-    # 테그 및 /n과 같은 공백제거
+    # 테그제거
     for title in my_titles:
         data.append(title.text)
-
-    # i=0
-    # print(data[1].split())
 
     return make_library_json(data)
 

@@ -1,11 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 
-def get_library_info():
+def get_library_info(call):
     str = ''
     crawl_json = crawl()
+
+    print('called by', call)
     for key in crawl_json:
         str += key+':'+crawl_json[key]+'\n'
+
+    print(str)
     return str
 
 def crawl():
@@ -18,25 +22,16 @@ def crawl():
     soup = BeautifulSoup(html, 'lxml')
 
     my_titles =soup.select('tr')
-    # print('mytitle', my_titles)
     data=[]
 
-    i=0
+    # 테그제거
     for title in my_titles:
         data.append(title.text)
-        # print(i, title.text)
-        i+=1
-    # j=0
-    # for num in data[13].split():
-    #     print(j, num)
-    #     j+=1
 
-    # print(data[1].split()[0][0:1])
-    # if name == "도서관":
     return make_library_json(data)
 
 
-
+#크롤링한 도서관좌석정보를 Josn화
 def make_library_json(data):
     library_info = {}
     for i in range(1, 12):
@@ -45,8 +40,8 @@ def make_library_json(data):
     library_info['전자정보실'] =  data[13].split()[2] + '/' + data[13].split()[1] + '(' + data[13].split()[3] + ') ' + data[13].split()[4]
     return library_info
 
+#크롤링한 좌석정보를 Json화 할 때 key 값만들기 (ex: 2-1A)
 def make_library_json_key(data, i):
     if len(data[i].split()[3])==1:
         return data[i].split()[0][0:1]+'-'+data[i].split()[2][0:1]+data[i].split()[3]
-    else:
-        return data[i].split()[0][0:1] + '-' + data[i].split()[2][0:1] +' '+data[i].split()[3]
+    return data[i].split()[0][0:1] + '-' + data[i].split()[2][0:1] +' '+data[i].split()[3]

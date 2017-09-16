@@ -34,8 +34,8 @@ def crawl():
 #크롤링한 도서관좌석정보를 Josn화
 def make_library_json(data):
     library_info = {}
-    # for i in range(1, 12):
-    #     library_info[make_library_json_key(data, i)] = data[i].split()[5] + '/' + data[i].split()[4] + '(' + data[i].split()[6] + ') ' + data[i].split()[7]
+    for i in range(1, 12):
+        library_info[make_library_json_key(data, i)] = data[i].split()[5] + '/' + data[i].split()[4] + '(' + data[i].split()[6] + ') ' + data[i].split()[7]
 
     library_info['전자정보실'] =  data[13].split()[2] + '/' + data[13].split()[1] + '(' + data[13].split()[3] + ') ' + data[13].split()[4]
     return library_info

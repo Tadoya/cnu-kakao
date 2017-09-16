@@ -18,7 +18,8 @@ def message(request):
     if content_msg == "도서관":
         return JsonResponse({
             'messgae' :{
-                'text' : library_crawl.get_library_info('view')
+             #   'text' : library_crawl.get_library_info('view')
+                'text' : '전자정보실 : 60/60(0%) 운영중'
             },
             'keyboard' : keyboards.default_keyboard()
         })

@@ -33,7 +33,7 @@ def message(request):
             'keyboard' : keyboards.meal_keyboard()
         })
     elif content_msg == "취업지원회관" or content_msg == "3후생관" \
-        or content_msg == "상록회관" or content_msg == "생활과학회관":
+        or content_msg == "상록회관" or content_msg == "생활과학대학":
         return JsonResponse({
             'message' :{
                 'text' : meal_crawl.get(content_msg)

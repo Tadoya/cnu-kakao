@@ -24,12 +24,12 @@ def crawl():
     my_titles =soup.select('tr')
     data=[]
 
-    # 테그제거
+    # 테그 및 /n과 같은 공백제거
     for title in my_titles:
         data.append(title.text)
 
-    i=0
-    print(data[1].split())
+    # i=0
+    # print(data[1].split())
 
     return make_library_json(data)
 

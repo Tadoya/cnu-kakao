@@ -18,7 +18,7 @@ def message(request):
     if content_msg == "도서관":
         return JsonResponse({
             'message' :{
-                'text' : library_crawl.get_library_info(),
+                'text' : library_crawl.get(),
             },
             'keyboard' : keyboards.default_keyboard()
         })
@@ -36,18 +36,18 @@ def message(request):
         or content_msg == "상록회관" or content_msg == "생활과학회관":
         return JsonResponse({
             'message' :{
-                'text' : meal_crawl.get_meal_info(content_msg)
+                'text' : meal_crawl.get(content_msg)
             },
             'keyboard' : keyboards.default_keyboard()
         })
     elif content_msg == "1후생관(링크)":
         return JsonResponse({
-            'message' : {
-                'text' : '링크를 누르면 메뉴화면이 나타납니다.'
-            },
-            'message_button':{
-                'label' : '자세히보기',
-                'url' : 'http://cnuis.cnu.ac.kr/jsp/etc/foodcourt1005.jpg'
+            'message': {
+                'text': '링크를 누르면 메뉴화면이 나타납니다.',
+                'message_button': {
+                    'label': '메뉴보기',
+                    'url': 'http://cnuis.cnu.ac.kr/jsp/etc/foodcourt1005.jpg'
+                }
             },
             'keyboard' : keyboards.default_keyboard()
         })
@@ -62,45 +62,12 @@ def message(request):
             },
             'keyboard' : keyboards.bus_keyboard()
         })
-    elif content_msg =="A노선(경상)":
+    elif content_msg == "A노선(경상)" or content_msg == "B노선(사회)" \
+        or content_msg == "C노선(유성)" or content_msg == "D노선(야갼)" \
+        or content_msg == "보운(편도)" or content_msg == "보운(운행)":
         return JsonResponse({
             'message' :{
-                'text' : bus_info.get('A')
-            },
-            'keyboard' : keyboards.default_keyboard()
-        })
-    elif content_msg =="B노선(사회)":
-        return JsonResponse({
-            'message' :{
-                'text' : bus_info.get('B')
-            },
-            'keyboard' : keyboards.default_keyboard()
-        })
-    elif content_msg =="C노선(유성)":
-        return JsonResponse({
-            'message' :{
-                'text' : bus_info.get('C')
-            },
-            'keyboard' : keyboards.default_keyboard()
-        })
-    elif content_msg =="D노선(야간)":
-        return JsonResponse({
-            'message' :{
-                'text' : bus_info.get('D')
-            },
-            'keyboard' : keyboards.default_keyboard()
-        })
-    elif content_msg =="보운(편도)":
-        return JsonResponse({
-            'message' :{
-                'text' : bus_info.get('E')
-            },
-            'keyboard' : keyboards.default_keyboard()
-        })
-    elif content_msg =="보운(운행)":
-        return JsonResponse({
-            'message' :{
-                'text' : bus_info.get('F')
+                'text' : bus_info.get(content_msg)
             },
             'keyboard' : keyboards.default_keyboard()
         })

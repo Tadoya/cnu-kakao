@@ -15,7 +15,7 @@ def bus_keyboard():
 def meal_keyboard():
     return {
         'type' : 'buttons',
-        'buttons' : ['취업지원회관', '제3후생관', '상록회관', '생활과학회관', '1후생관(링크)']
+        'buttons' : ['취업지원회관', '제3후생관', '상록회관', '생활과학대학', '1후생관(링크)']
     }
 
 def nonbutton_keyboard():

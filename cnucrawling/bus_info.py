@@ -1,15 +1,15 @@
 def get(name):
-    if name == 'A':
+    if name == 'A노선(경상)':
         return a
-    elif name == 'B':
+    elif name == 'B노선(사회)':
         return b
-    elif name == 'C':
+    elif name == 'C노선(유성)':
         return c
-    elif name == 'D':
+    elif name == 'D노선(야간)':
         return d
-    elif name == 'E':
+    elif name == '보운(편도)':
         return e
-    elif name == 'F':
+    elif name == '보운(운행)':
         return f
     else:
         return 'bus info error'

@@ -18,7 +18,7 @@ def message(request):
     if content_msg == "도서관":
         return JsonResponse({
             'message' :{
-               'text' : library_crawl.get_library_info('view')
+                'text' : library_crawl.get_library_info('view'),
             },
             'keyboard' : keyboards.default_keyboard()
         })

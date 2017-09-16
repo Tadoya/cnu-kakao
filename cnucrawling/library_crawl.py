@@ -7,7 +7,7 @@ def get_library_info(call):
 
     print('called by', call)
     for key in crawl_json:
-        str += key+' : '+crawl_json[key]+'\n'
+        str += key+'\n\t'+crawl_json[key]+'\n\n'
 
     print(str)
     return str

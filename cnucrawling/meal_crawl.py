@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def get_meal_info(place):
+def get(place):
     try:
         req = requests.get('http://cnuis.cnu.ac.kr/jsp/etc/toDayMenu.jsp')
     except:
@@ -9,13 +9,14 @@ def get_meal_info(place):
 
     html = req.text
     soup = BeautifulSoup(html, 'lxml')
-    my_title = soup.select('table.tab_color tr td')
-    data=[]
+    selected_elements = soup.select('table.tab_color tr td')
 
+
+    data=[]
     #휴일엔 td가 31개 평일엔 43개->월요일에 확인예정
     # td_count=0
-    for title in my_title:
-        data.append(title.text)
+    for element in selected_elements:
+        data.append(element.text)
     #     td_count+=1
 
     # 주말이라서 일단 표에 보이는대로 크롤링

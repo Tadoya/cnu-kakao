@@ -20,9 +20,7 @@ def get(place):
         print(td_count, element.text)
         td_count+=1
 
-
-
-    # 주말이라서 일단 표에 보이는대로 크롤링
+    ###### form
     a = '취업지원회관\n' \
         '>학생식단(백반) '+data[13].split()[0]+'원\n' \
         +make_menu(data[12])+ \
@@ -79,6 +77,7 @@ def make_menu(data):
         elif key =='included)':
             continue
         str += key +'\n\t'
+
     return str
 
 def make_menu_ilpum(data):
@@ -94,9 +93,11 @@ def make_menu_ilpum(data):
         elif iscontinue == True:
             iscontinue=False
             continue
+
         if i%2==1:
             str += key+'원\n\t'
         else :
             str += key+'\t'
         i += 1
+
     return str

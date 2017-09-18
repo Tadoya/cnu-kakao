@@ -48,7 +48,7 @@ def get(place):
     d = '생활과학대학\n' \
         '>학생식단(백반) ' + data[19].split()[0]+ '원\n' \
         + make_menu(data[18])+\
-        '\n>교직원식당\n' + data[28].split()[0] + '원\n' \
+        '\n>교직원식당 ' + data[28].split()[0] + '원\n' \
         + make_menu(data[27]) +\
         '\n>학생식당(일품)\n' \
         + make_menu_ilpum(data[33])

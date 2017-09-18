@@ -9,67 +9,97 @@ def get(place):
 
     html = req.text
     soup = BeautifulSoup(html, 'lxml')
-    selected_elements = soup.select('table.tab_color tr td')
 
+    selected_elements = soup.select('table.tab_color > tr > td[height="20"]')
 
+    #td_count가 34가 아니라면, 휴일
     data=[]
-    #휴일엔 td가 31개 평일엔 43개->월요일에 확인예정
-    # td_count=0
+    td_count=0
     for element in selected_elements:
         data.append(element.text)
-    #     td_count+=1
+        print(td_count, element.text)
+        td_count+=1
+
+
 
     # 주말이라서 일단 표에 보이는대로 크롤링
     a = '취업지원회관\n' \
         '>학생식단(백반)\n' \
-        + make_menu(data[18])+'\n' \
-        '\n>교직원식당\n' \
-        + make_menu(data[23])+'\n' \
-        '\n>학생식당(일품)\n' \
-        + make_menu(data[28])+'\n'
+        +make_menu(data[12]) \
+        +data[13].split()[0] + '\n\n' \
+        '>교직원식당\n' \
+        +make_menu(data[21]) \
+        +data[22].split()[0]+'\n\n' \
+        '>학생식당(일품)\n' \
+        +make_menu_ilpum(data[30])+'\n'
+
 
     b = '3후생관\n' \
         '>학생식단(백반)\n' \
-        + make_menu(data[19])+'\n' \
+        + make_menu(data[14])+ \
         '\n>교직원식당\n' \
-        + make_menu(data[24])+'\n' \
-        '\n>학생식당(일품)\n' \
-        + make_menu(data[29])+'\n'
+        + make_menu(data[23]) \
+        + data[24].split()[0]
+
 
     c = '상회회관\n' \
         '>학생식단(백반)\n' \
-        + make_menu(data[20])+'\n' \
+        + make_menu(data[16])\
+        + data[17].split()[0]+ '\n\n'+\
         '\n>교직원식당\n' \
-        + make_menu(data[25])+'\n' \
+        + make_menu(data[25]) \
+        + data[26].split()[0] + '\n\n' + \
         '\n>학생식당(일품)\n' \
-        + make_menu(data[30])+'\n'
+        + make_menu_ilpum(data[32])+'\n'
 
     d = '생활과학대학\n' \
         '>학생식단(백반)\n' \
-        + make_menu(data[21])+'\n' \
+        + make_menu(data[18])\
+        + data[19].split()[0]+ '\n\n'+\
         '\n>교직원식당\n' \
-        + make_menu(data[26])+'\n' \
+        + make_menu(data[27]) \
+        + data[28].split()[0] + '\n\n' + \
         '\n>학생식당(일품)\n' \
-        + make_menu(data[31])+'\n'
+        + make_menu(data[33])+'\n'
 
+    if td_count==34:
+        if place=='취업지원회관':
+            return a
+        elif place=='3후생관':
+            return b
+        elif place=='상록회관':
+            return c
+        elif place=='생활과학대학':
+            return d
+        else: return 'meal error'
+    else: return '오늘은 식당을 운영하지 않습니다'
 
-    if place=='취업지원회관':
-        return a
-    elif place=='3후생관':
-        return b
-    elif place=='상록회관':
-        return c
-    elif place=='생활과학대학':
-        return d
-    else: return 'meal error'
 
 
 
 def make_menu(data):
-    str=''
-    if len(data.split())==1:
-        return data.split()[0]
-    else:
-        for i in data:
-            str+=data[i]
-        return str
+    str='\t'
+    for key in data.split():
+        if key =='(pork' or key=='(beef' or key=='null':
+            continue
+        elif key =='included)':
+            continue
+        str += key +'\n\t'
+    return str
+
+def make_menu_ilpum(data):
+    i=0;
+    iscontinue=False
+    str='\t'
+    for key in data.split():
+        if key =='(pork' or key=='(beef' or key=='null':
+            continue
+        elif key == 'included)':
+            iscontinue=True
+            continue
+        elif iscontinue == True:
+            iscontinue=False
+            continue
+        str += key+'\n\t'
+        i += 1
+    return str

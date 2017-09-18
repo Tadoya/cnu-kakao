@@ -1,5 +1,6 @@
-# from . import meal_crawl, library_crawl, bus_info
+from . import meal_crawl, library_crawl, bus_info
 
+meal_crawl.get('취업지원회관')
 # print(meal_crawl.get('취업지원회관'))
 # print(meal_crawl.get('3후생관'))
 # print(meal_crawl.get('상록회관'))

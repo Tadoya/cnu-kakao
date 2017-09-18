@@ -24,43 +24,37 @@ def get(place):
 
     # 주말이라서 일단 표에 보이는대로 크롤링
     a = '취업지원회관\n' \
-        '>학생식단(백반)\n' \
-        +make_menu(data[12]) \
-        +data[13].split()[0] + '\n\n' \
-        '>교직원식당\n' \
-        +make_menu(data[21]) \
-        +data[22].split()[0]+'\n\n' \
-        '>학생식당(일품)\n' \
+        '>학생식단(백반) '+data[13].split()[0]+'원\n' \
+        +make_menu(data[12])+ \
+        '\n>교직원식당 ' +data[22].split()[0]+'원\n' \
+        +make_menu(data[21])+ \
+        '\n>학생식당(일품)\n' \
         +make_menu_ilpum(data[30])+'\n'
 
 
-    b = '3후생관\n' \
+    b = '3후생관 \n' \
         '>학생식단(백반)\n' \
         + make_menu(data[14])+ \
-        '\n>교직원식당\n' \
-        + make_menu(data[23]) \
-        + data[24].split()[0]
+        '\n>교직원식당 ' +data[24].split()[0]+'원\n' \
+        + make_menu(data[23])
 
 
     c = '상회회관\n' \
-        '>학생식단(백반)\n' \
-        + make_menu(data[16])\
-        + data[17].split()[0]+ '\n\n'+\
-        '\n>교직원식당\n' \
-        + make_menu(data[25]) \
-        + data[26].split()[0] + '\n\n' + \
+        '>학생식단(백반) ' + data[17].split()[0]+ '원\n'\
+        + make_menu(data[16]) +'\n'\
+        '\n>교직원식당 ' + data[26].split()[0] + '원\n' \
+        + make_menu(data[25]) +\
         '\n>학생식당(일품)\n' \
-        + make_menu_ilpum(data[32])+'\n'
+        + make_menu_ilpum(data[32])
 
     d = '생활과학대학\n' \
-        '>학생식단(백반)\n' \
-        + make_menu(data[18])\
-        + data[19].split()[0]+ '\n\n'+\
-        '\n>교직원식당\n' \
-        + make_menu(data[27]) \
-        + data[28].split()[0] + '\n\n' + \
+        '>학생식단(백반) ' + data[19].split()[0]+ '원\n' \
+        + make_menu(data[18])+\
+        '\n>교직원식당\n' + data[28].split()[0] + '원\n' \
+        + make_menu(data[27]) +\
         '\n>학생식당(일품)\n' \
-        + make_menu(data[33])+'\n'
+        + make_menu_ilpum(data[33])
+
 
     if td_count==34:
         if place=='취업지원회관':
@@ -100,6 +94,9 @@ def make_menu_ilpum(data):
         elif iscontinue == True:
             iscontinue=False
             continue
-        str += key+'\n\t'
+        if i%2==1:
+            str += key+'원\n\t'
+        else :
+            str += key+'\t'
         i += 1
     return str

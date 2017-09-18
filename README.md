@@ -7,5 +7,15 @@
 * lxml
 * heroku
 
-## 기타사항
-* 학식 기능은 평일 식단이 나와야 개발가능
+## 기능
+* 식당별 학식정보
+* 실시간 도서관 좌석정보
+* 학교버스 노선정보
+
+## UI
+![](https://github.com/Tadoya/tadoya.github.io/blob/master/images/cnubot/1.jpeg?raw=true) 
+![](https://github.com/Tadoya/tadoya.github.io/blob/master/images/cnubot/2.jpeg?raw=true)  
+![](https://github.com/Tadoya/tadoya.github.io/blob/master/images/cnubot/3.jpeg?raw=true) 
+![](https://github.com/Tadoya/tadoya.github.io/blob/master/images/cnubot/4.jpeg?raw=true)  
+![](https://github.com/Tadoya/tadoya.github.io/blob/master/images/cnubot/5.jpeg?raw=true) 
+![](https://github.com/Tadoya/tadoya.github.io/blob/master/images/cnubot/6.jpeg?raw=true)

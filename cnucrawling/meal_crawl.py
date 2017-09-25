@@ -25,5 +25,5 @@ def get(place):
 
 
     if td_count==34:
-        return meal_form(place)
+        return meal_form.get_form(place, data)
     else: return '오늘은 식당을 운영하지 않습니다'

@@ -48,7 +48,7 @@ def get_form(place, data):
 def make_menu(data):
     str='\t'
     for key in data.split():
-        if key =='(pork' or key=='(beef' or key=='null':
+        if key =='(pork' or key=='(beef' or key=='(pork,' or key=='beef' or key=='null':
             continue
         elif key =='included)':
             continue
@@ -61,7 +61,7 @@ def make_menu_ilpum(data):
     iscontinue=False
     str='\t'
     for key in data.split():
-        if key =='(pork' or key=='(beef' or key=='null':
+        if key=='(pork' or key=='(beef' or key=='(pork,' or key=='beef' or key=='null':
             continue
         elif key == 'included)':
             iscontinue=True

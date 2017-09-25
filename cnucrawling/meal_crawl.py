@@ -18,12 +18,10 @@ def get(place):
     td_count=0
     for element in selected_elements:
         data.append(element.text)
-        print(td_count, element.text)
+        # print(td_count, element.text)
         td_count+=1
 
-
-
-
+    #평일엔 td_count==34
     if td_count==34:
         return meal_form.get_form(place, data)
     else: return '오늘은 식당을 운영하지 않습니다'

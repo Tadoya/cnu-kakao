@@ -1,15 +1,17 @@
-import requests
+import requests, datetime
 from bs4 import BeautifulSoup
 
 #문자열화
 def get():
-    str = ''
+
+    nowtime = timeset(datetime.datetime.now().hour)+'시'+str(datetime.datetime.now().minute)+'분'
+    info ='열람실 좌석현황('+nowtime+')\n\t잔여좌석/전체좌석\n\n'
     crawl_json = crawl()
 
     for key in crawl_json:
-        str += key+'\n\t'+crawl_json[key]+'\n\n'
+        info += '>'+key+'\n\t'+crawl_json[key]+'\n\n'
 
-    return str
+    return info
 
 def crawl():
     try:
@@ -27,7 +29,7 @@ def crawl():
     # 태그제거
     for element in selected_elements:
         data.append(element.text)
-        print(td_count, element.text)
+        # print(td_count, element.text)
         td_count+=1
 
 
@@ -45,6 +47,11 @@ def make_library_json(data):
 
 #크롤링한 좌석정보를 Json화 할 때 key 값만들기 (ex: 2-1A)
 def make_library_json_key(data, i):
-    if len(data[i].split()[3])==1:
-        return data[i].split()[0] +' 제 '+ data[i].split()[2] + data[i].split()[3]
     return data[i].split()[0] +' 제 '+ data[i].split()[2] + ' ' + data[i].split()[3]
+
+
+def timeset(nowhour):
+    if (nowhour/12)>1:
+        return '오후 '+str(nowhour%12)
+    else:
+        return '오전 '+nowhour

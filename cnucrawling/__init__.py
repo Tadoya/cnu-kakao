@@ -6,7 +6,7 @@ from . import meal_crawl, library_crawl, bus_info
 # print(meal_crawl.get('상록회관'))
 # print(meal_crawl.get('생활과학대학'))
 #
-# print(library_crawl.get)
+# print(library_crawl.get())
 #
 # print(bus_info.get('A노선(경상)'))
 # print(bus_info.get('B'))

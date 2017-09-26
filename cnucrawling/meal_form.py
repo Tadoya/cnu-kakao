@@ -1,9 +1,11 @@
 from . import meal_crawl
+import datetime
 
 ###### form
 
 def get_form(place, data):
-    a = '취업지원회관\n' \
+    today = str(datetime.date.today().month) + '월' + str(datetime.date.today().day) + '일'
+    a = '취업지원회관('+today+')\n' \
         '>학생식단(백반) ' + data[13].split()[0] + '원\n' \
         + make_menu(data[12]) + \
         '\n>교직원식당 ' + data[22].split()[0] + '원\n' \
@@ -11,21 +13,21 @@ def get_form(place, data):
         '\n>학생식당(일품)\n' \
         + make_menu_ilpum(data[30]) + '\n'
 
-    b = '3후생관 \n' \
+    b = '3후생관('+today+')\n' \
         '>학생식단(백반)\n' \
         + make_menu(data[14]) + \
         '\n>교직원식당 ' + data[24].split()[0] + '원\n' \
         + make_menu(data[23])
 
-    c = '상회회관\n' \
+    c = '상록회관('+today+')\n' \
         '>학생식단(백반) ' + data[17].split()[0] + '원\n' \
         + make_menu(data[16]) + '\n' \
-                                '\n>교직원식당 ' + data[26].split()[0] + '원\n' \
+        '\n>교직원식당 ' + data[26].split()[0] + '원\n' \
         + make_menu(data[25]) + \
         '\n>학생식당(일품)\n' \
         + make_menu_ilpum(data[32])
 
-    d = '생활과학대학\n' \
+    d = '생활과학대학('+today+')\n' \
         '>학생식단(백반) ' + data[19].split()[0] + '원\n' \
         + make_menu(data[18]) + \
         '\n>교직원식당 ' + data[28].split()[0] + '원\n' \

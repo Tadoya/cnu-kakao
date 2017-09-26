@@ -3,7 +3,7 @@
 def default_keyboard():
     return {
         'type' : 'buttons',
-        'buttons' : ['학식', '도서관', '버스노선']
+        'buttons' : ['오늘의학식', '열람실현황', '학교버스노선']
     }
 
 def bus_keyboard():

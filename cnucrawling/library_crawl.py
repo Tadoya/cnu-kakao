@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 def get():
 
     nowtime = timeset(datetime.datetime.now().hour)+'시'+str(datetime.datetime.now().minute)+'분'
-    info ='열람실 좌석현황('+nowtime+')\n\t잔여좌석/전체좌석\n\n'
+    info ='열람실 좌석현황\n('+nowtime+')\n\t잔여좌석/전체좌석\n\n'
     crawl_json = crawl()
 
     for key in crawl_json:

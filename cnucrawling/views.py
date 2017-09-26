@@ -15,7 +15,7 @@ def message(request):
     received_json_data = json.loads(json_str)
     content_msg = received_json_data['content']
 
-    if content_msg == "도서관":
+    if content_msg == "열람실현황":
         return JsonResponse({
             'message' :{
                 'text' : library_crawl.get(),
@@ -25,7 +25,7 @@ def message(request):
 
 ################ 학식
 
-    elif content_msg == "학식":
+    elif content_msg == "오늘의학식":
         return JsonResponse({
             'message' :{
                 'text' : '메뉴를 확인할 식당을 선택하세요.'
@@ -55,7 +55,7 @@ def message(request):
 ############### 버스
 
 
-    elif content_msg == "버스노선":
+    elif content_msg == "학교버스노선":
         return JsonResponse({
             'message' :{
                 'text' : '노선을 선택하세요.'

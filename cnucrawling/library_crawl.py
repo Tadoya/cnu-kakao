@@ -54,4 +54,4 @@ def timeset(nowhour):
     if (nowhour/12)>1:
         return '오후 '+str(nowhour%12)
     else:
-        return '오전 '+nowhour
+        return '오전 '+str(nowhour)

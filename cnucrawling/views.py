@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from . import keyboards
 from . import library_crawl, bus_info, meal_crawl
+from .weather_crawl import Weather
 
 # Create your views here.
 
@@ -11,6 +12,7 @@ def keyboard(request):
 
 @csrf_exempt
 def message(request):
+    w = Weather()
     json_str = (request.body).decode('utf-8')
     received_json_data = json.loads(json_str)
     content_msg = received_json_data['content']
@@ -71,6 +73,17 @@ def message(request):
             },
             'keyboard' : keyboards.default_keyboard()
         })
+
+############### 날씨
+    elif content_msg == "오늘의날씨":
+        return JsonResponse({
+            'message': {
+                'text' : w.get_weather_data()
+            },
+            'keyboard' : keyboards.default_keyboard()
+        })
+
+
     else:
         return JsonResponse({
             'message' :{
